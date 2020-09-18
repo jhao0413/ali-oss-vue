@@ -13,47 +13,19 @@
     <el-dialog :visible.sync="dialogVisible">
       <img width="100%" :src="dialogImageUrl" alt="" />
     </el-dialog>
-    <!-- <el-upload
-      class="upload-demo"
-      action
-      :http-request="fnUploadRequest"
-      :on-preview="handlePreview"
-      :on-remove="handleRemove"
-      :file-list="fileList"
-      list-type="picture"
-    >
-      <el-button size="small" type="primary">点击上传</el-button>
-      <div slot="tip" class="el-upload__tip">
-        只能上传jpg/png文件，且不超过500kb
-      </div>
-    </el-upload> -->
   </div>
 </template>
 
 <script>
-// import { client } from "../utils/alioss";
 import OSS from "ali-oss";
 export default {
-  props: ["id"],
   data() {
     return {
       dialogImageUrl: "",
       dialogVisible: false,
       disabled: false,
-      selectImg: "",
       loading: false,
-      arr: [],
-      num: 0,
-      value1: [],
       fileList: [],
-      card: {
-        id: 0,
-        name: "",
-        price: 0,
-        desc: "",
-        items: [],
-        imgUrl: "",
-      },
     };
   },
   methods: {
@@ -70,10 +42,10 @@ export default {
         // 获取OSS配置信息
         let client = new OSS({
           secure: true,
-          accessKeyId: "LTAI4FwwMhSouis1525cC2fP",
-          accessKeySecret: "ACziMrcjplTvzstbZI1jjsAj16Dvm6",
-          bucket: "jhao413",
-          region: "oss-cn-beijing",
+          accessKeyId: "", //阿里云AccessKey ID
+          accessKeySecret: "", //阿里云accessKeySecret
+          bucket: "", //bucket域名
+          region: "", //oss地区，如：oss-cn-beijing。（注：不用加.aliyun.com）
         });
         this.loading = true;
         function getFormatDate() {
